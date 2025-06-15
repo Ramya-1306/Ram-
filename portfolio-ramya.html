@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ramya R - Creative Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<style>
+  /* Reset & base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; 
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #f0f4f8, #ffffff);
+    color: #2c3e50;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+  a {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #357a38;
+    outline: none;
+  }
+  h1,h2,h3,h4 {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0;
+    margin-bottom: 0.6em;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    color: #226644;
+  }
+  h2 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #2a533a;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #3b5a40;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  /* Container */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 15px 50px;
+  }
+  /* Navigation */
+  header {
+    background: #4caf50;
+    box-shadow: 0 3px 15px rgb(76 175 80 / 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav h1 {
+    color: white;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  nav ul li a {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    background-color: rgba(255 255 255 / 0.25);
+    outline: none;
+  }
+  /* Sections */
+  section {
+    background: white;
+    border-radius: 16px;
+    padding: 30px 30px 45px 30px;
+    margin-top: 40px;
+    box-shadow:
+      0 4px 6px rgb(0 0 0 / 0.1),
+      0 1px 3px rgb(0 0 0 / 0.08);
+  }
+
+  /* About Section */
+  #about .about-top {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  #about .profile-photo {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #4CAF50;
+    box-shadow: 0 5px 15px rgb(76 175 80 / 0.3);
+  }
+  #about .career-objective {
+    flex: 1 1 300px;
+    backdrop-filter: saturate(180%) blur(10px);
+    background: rgba(76,175,80,0.1);
+    padding: 25px 20px;
+    border-radius: 12px;
+    color: #2a533a;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  #about .edu-personal {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  #about h3.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+    border-bottom: 3px solid #4caf50;
+    color: #2a533a;
+    padding-bottom: 6px;
+  }
+  /* List with icons */
+  .icon-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .icon-list li {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #385e33;
+  }
+  .icon-list li i.material-icons {
+    color: #4caf50;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  /* Skill Section */
+  #skills .skill-category {
+    margin-bottom: 28px;
+  }
+  #skills h3.section-title {
+    margin-bottom: 20px;
+    border-bottom: 3px solid #4caf50;
+    padding-bottom: 6px;
+  }
+  .skill-bars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .skill-bar {
+    width: 300px;
+    max-width: 100%;
+    background: #eaf4ea;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .skill-bar-inner {
+    padding: 8px 20px;
+    background: linear-gradient(90deg, #4caf50, #357a38);
+    color: white;
+    font-weight: 600;
+    border-radius: 20px;
+    transition: width 1.2s ease;
+    white-space: nowrap;
+  }
+  .skill-label {
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #317a2b;
+  }
+  .skill-label i.material-icons {
+    color: #4caf50;
+    font-size: 24px;
+  }
+  /* Soft Skills & Interests - simple lists with icons */
+  .skill-list {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .skill-list li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #eaf4ea;
+    padding: 6px 14px;
+    border-radius: 12px;
+    color: #317a2b;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgb(68 133 68 / 0.15);
+  }
+  .skill-list li i.material-icons {
+    font-size: 20px;
+  }
+  /* Projects */
+  #projects .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .project-card {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    background: #f8faf8;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.15);
+  }
+  .project-image {
+    min-width: 180px;
+    max-width: 180px;
+    height: 125px;
+    object-fit: cover;
+    border-radius: 0 0 0 16px;
+    filter: drop-shadow(0 3px 5px rgb(76 175 80 / 0.35));
+  }
+  .project-info {
+    padding: 20px 30px;
+    flex: 1;
+  }
+  .project-info h4 {
+    margin: 0 0 12px;
+    color: #226644;
+  }
+  .project-info p {
+    margin: 0;
+    color: #3b5a40;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  /* Extracurricular Activities */
+  #extracurricular ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  #extracurricular ul li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+    font-size: 1rem;
+    color: #335633;
+    font-weight: 600;
+  }
+  #extracurricular ul li i.material-icons {
+    color: #4caf50;
+  }
+  #extracurricular .certificate-image {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgb(76 175 80 / 0.3);
+  }
+  /* Contact */
+  #contact p {
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 14px 0;
+  }
+  #contact a {
+    font-weight: 700;
+  }
+  #contact .icon-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  #contact .icon-link i.material-icons {
+    color: #4caf50;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    #about .about-top {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #about .career-objective {
+      margin-top: 20px;
+    }
+    #about .edu-personal {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .project-card {
+      flex-direction: column;
+      align-items: center;
+    }
+    .project-image {
+      max-width: 100%;
+      border-radius: 16px 16px 0 0;
+      height: 180px;
+    }
+    .project-info {
+      padding: 14px 20px 24px;
+    }
+    .skill-bars {
+      flex-direction: column;
+    }
+    .skill-bar {
+      width: 100%;
+    }
+    nav ul {
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 2rem;
+    }
+    nav h1 {
+      font-size: 1.6rem;
+    }
+    nav ul li a {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="container" aria-label="Main navigation">
+    <h1>Ramya R</h1>
+    <ul role="menubar">
+      <li role="none"><a href="#about" role="menuitem" tabindex="0">About</a></li>
+      <li role="none"><a href="#skills" role="menuitem" tabindex="0">Skills</a></li>
+      <li role="none"><a href="#projects" role="menuitem" tabindex="0">Projects</a></li>
+      <li role="none"><a href="#extracurricular" role="menuitem" tabindex="0">Extracurricular</a></li>
+      <li role="none"><a href="#contact" role="menuitem" tabindex="0">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container" id="maincontent" tabindex="-1">
+  <!-- About Section -->
+  <section id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About Me</h2>
+    <div class="about-top" role="region" aria-label="Profile and Career Objective">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/576d7372-88fc-463c-ae7c-ef1a1ca56a1d.png" alt="Portrait photograph of Ramya R" class="profile-photo" />
+      <article class="career-objective">
+        <h3>Career Objective</h3>
+        <p>I am a motivated and detail-oriented Software Engineer seeking an opportunity to apply my technical skills in software development, problem-solving, and innovation to contribute to a dynamic team and grow professionally.</p>
+      </article>
+    </div>
+    <div class="edu-personal" role="region" aria-label="Education and Personal Details">
+      <div>
+        <h3 class="section-title">Education</h3>
+        <ul class="icon-list" aria-label="Education details">
+          <li><i class="material-icons" aria-hidden="true">school</i> Kongunadu College of Engineering and Technology, Trichy (2022 - 2026) - CGPA: 8.21</li>
+          <li><i class="material-icons" aria-hidden="true">school</i> HSS - Swamy Vivekananda Matric Hr Sec School, Perambalur (2021 - 2022) - Percentage: 91.7%</li>
+          <li><i class="material-icons" aria-hidden="true">school</i> SSLC - Swamy Vivekananda Matric Hr Sec School, Perambalur (2019 - 2020) - Percentage: 97.6%</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="section-title">Personal Details</h3>
+        <ul class="icon-list" aria-label="Personal details">
+          <li><i class="material-icons" aria-hidden="true">cake</i> Date of Birth: 13/06/2005</li>
+          <li><i class="material-icons" aria-hidden="true">face</i> Gender: Female</li>
+          <li><i class="material-icons" aria-hidden="true">public</i> Nationality: Indian</li>
+          <li><i class="material-icons" aria-hidden="true">location_on</i> Address: Perambalur, Tamilnadu</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" aria-labelledby="skills-title">
+    <h2 id="skills-title">Skills</h2>
+
+    <div class="skill-category" role="region" aria-label="Programming and web development languages">
+      <h3 class="section-title">Programming & Web Development Languages</h3>
+      <div class="skill-bars">
+        <div>
+          <div class="skill-label"><i class="material-icons" aria-hidden="true">code</i> Java</div>
+          <div class="skill-bar"><div class="skill-bar-inner" style="width: 85%;">85%</div></div>
+        </div>
+        <div>
+          <div class="skill-label"><i class="material-icons" aria-hidden="true">language</i> HTML</div>
+          <div class="skill-bar"><div class="skill-bar-inner" style="width: 95%;">95%</div></div>
+        </div>
+        <div>
+          <div class="skill-label"><i class="material-icons" aria-hidden="true">brush</i> CSS</div>
+          <div class="skill-bar"><div class="skill-bar-inner" style="width: 90%;">90%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-category" role="region" aria-label="Soft skills">
+      <h3 class="section-title">Soft Skills</h3>
+      <ul class="skill-list">
+        <li><i class="material-icons" aria-hidden="true">schedule</i> Time Management</li>
+        <li><i class="material-icons" aria-hidden="true">chat</i> Communication</li>
+        <li><i class="material-icons" aria-hidden="true">group</i> Team Work</li>
+      </ul>
+    </div>
+
+    <div class="skill-category" role="region" aria-label="Area of Interest">
+      <h3 class="section-title">Area of Interest</h3>
+      <ul class="skill-list">
+        <li><i class="material-icons" aria-hidden="true">web</i> Web Development</li>
+        <li><i class="material-icons" aria-hidden="true">design_services</i> UI/UX Design</li>
+        <li><i class="material-icons" aria-hidden="true">developer_mode</i> Software Development</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" aria-labelledby="projects-title">
+    <h2 id="projects-title">Projects</h2>
+    <div class="project-list" role="list">
+      <article class="project-card" role="listitem">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0c24210b-78be-4bdb-85f7-0e20e0b6d425.png" alt="Ultrasound image representing Brain Tumor in Foetus project" class="project-image" />
+        <div class="project-info">
+          <h4>Brain Tumor in Foetus</h4>
+          <p>It detects fetal brain tumors using ultrasound imaging and deep learning techniques, combining CNNs and Adapter filters for accurate analysis.</p>
+        </div>
+      </article>
+      <article class="project-card" role="listitem">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/38be2b8c-413d-4a29-8116-e42f3ff43467.png" alt="Image representing Cattle Disease Detection project" class="project-image" />
+        <div class="project-info">
+          <h4>Cattle Disease Detection using CNN</h4>
+          <p>A deep learning-based system using CNNs automates cattle disease detection from images, analyzing visual symptoms like skin lesions and posture anomalies.</p>
+        </div>
+      </article>
+      <article class="project-card" role="listitem">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5db46563-6e09-4d0f-8dc5-82e814277af5.png" alt="Screenshot representing Smart EV Charging Management System project" class="project-image" />
+        <div class="project-info">
+          <h4>Smart EV Charging Management System</h4>
+          <p>A web-based application developed using React and Flask to streamline EV charging by enabling slot booking, station location tracking, and user authentication.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Extracurricular Section -->
+  <section id="extracurricular" aria-labelledby="extra-title">
+    <h2 id="extra-title">Extracurricular Activities</h2>
+    <ul>
+      <li><i class="material-icons" aria-hidden="true">school</i> Value Added Course: Learned UI/UX Design Fundamentals organized by Kongunadu College of Engineering and Technology, Trichy.</li>
+      <li><i class="material-icons" aria-hidden="true">presentation</i> Paper Presentation (AIRO): Participated in AIRO 4.0 National Level Symposium organized by Sairam College of Engineering, Chennai.</li>
+      <li><i class="material-icons" aria-hidden="true">emoji_events</i> Hackathon (TNWISE): Participated in TANCAM’s Hackathon for Tamil Nadu Women in Science and Engineering (TNWISE 2025).</li>
+      <li><i class="material-icons" aria-hidden="true">work</i> Internship: Attended a 14-day Internship in Machine Learning at iSquare Consulting Services, Trichy.</li>
+    </ul>
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/683928e2-9773-43a2-ad2d-95925234c9e9.png" alt="Certificate image" class="certificate-image" />
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact</h2>
+    <p class="icon-link"><i class="material-icons" aria-hidden="true">phone</i> 8220016327</p>
+    <p class="icon-link"><i class="material-icons" aria-hidden="true">email</i> <a href="mailto:ramyarajendhran13@gmail.com">ramyarajendhran13@gmail.com</a></p>
+    <p class="icon-link"><i class="material-icons" aria-hidden="true">linkedin</i> <a href="https://www.linkedin.com/in/ramya-r-05272a30a/" target="_blank" rel="noopener">LinkedIn Profile</a></p>
+  </section>
+</main>
+
+<footer role="contentinfo" style="text-align:center; padding:20px 0; margin-top:40px; background:#4caf50; color:white; font-weight:600;">
+  &copy; 2024 Ramya R. All rights reserved.
+</footer>
+
+</body>
+</html>
+
